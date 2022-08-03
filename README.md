@@ -24,18 +24,18 @@ Matrícula: 120211139
 ### Desenvolvimento
 
 
-Nome do Aluno 1 - 1, 4
+Íris Almeida Oliveira de Farias- 1, 4
 
-Nome do Aluno 2 - 2, 6
+Emanuel Vinicius Sá de Lima e Lima - 2, 6
 
-Nome do Aluno 3 - 3, 5
+Wanderson Lopes de Souto - 3, 5
 
 
 ### Testes
 
 
-Nome do Aluno 1 - 3, 5
+Íris Almeida Oliveira de Farias - 3, 5
 
-Nome do Aluno 2 - 1, 4
+Emanuel Vinicius Sá de Lima e Lima - 1, 4
 
-Nome do Aluno 3 - 2, 6.
+Wanderson Lopes de Souto - 2, 6
