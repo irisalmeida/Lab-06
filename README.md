@@ -38,4 +38,4 @@ Nome do Aluno 1 - 3, 5
 
 Nome do Aluno 2 - 1, 4
 
-Nome do Aluno 3 - 2, 6
+Nome do Aluno 3 - 2, 6.
