@@ -11,7 +11,7 @@ Emanuel Vinicius Sá de Lima e Lima
 
 Matrícula: 120210785
 
-Wanderson Lopes 
+Wanderson Lopes de Souto
 
 Matrícula: 120211139
 
