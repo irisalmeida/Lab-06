@@ -24,11 +24,11 @@ Matrícula: 120211139
 ### Desenvolvimento
 
 
-Íris Almeida Oliveira de Farias- 1, 4
+Íris Almeida Oliveira de Farias- 1, 6
 
-Emanuel Vinicius Sá de Lima e Lima - 2, 6
+Emanuel Vinicius Sá de Lima e Lima - 2, 5
 
-Wanderson Lopes de Souto - 3, 5
+Wanderson Lopes de Souto - 3, 4
 
 
 ### Testes
