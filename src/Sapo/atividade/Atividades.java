@@ -13,11 +13,9 @@ public class Atividades {
 	private int tamanhoTarefas;
 	private List<Tarefa> tarefas;
 	private List<String> vogais;
-	private boolean desativado;
-	private boolean concluida;
-	private boolean pendente;
+	private boolean desativada;
 	private boolean ativa;
-
+	private boolean encerrada;
 	public int quantidadeTarefas;
 
 	private  static int contadorAtividades;
@@ -32,10 +30,9 @@ public class Atividades {
 		this.tarefas = new ArrayList<>();
 		this.vogais = new ArrayList<>(Arrays.asList("a", "e", "i", "o", "u"));
 		this.contadorAtividades = 0;
-		this.desativado = false;
-		this.concluida = false;
-		this.pendente = false;
-		this.ativa = false;
+		this.desativada = false; //abandono ou invalidez
+		this.encerrada = false; // concluida
+		this.ativa = true;
 		contadorAtividades++;
 	}
 	
@@ -73,29 +70,48 @@ public class Atividades {
 		}
 		return retorno;
 	}
-	public void salvaTarefas(Tarefa tarefa) {
+	public void adicionaTarefa(Tarefa tarefa) {
 		tarefas.add(tarefa);
+		this.quantidadeTarefas ++;
 	}
-	public boolean desativada() {
-		if (quantidadeTareafasRealizadas() == tarefas.size()) {
-			this.desativado = true;
+	public void desativar() {
+		if (this.desativada) {
+			throw new IllegalStateException("A atividade já está desativada");
+		} else if (this.encerrada) {
+			throw new IllegalStateException("Esta atividade já foi concluída");
+		}
+		if (quantidadeTareafasRealizadas() == this.quantidadeTarefas) {
+			this.desativada = true;
+			this.encerrada = false;
+			this.ativa = false;
 		}
 		
 	}
-	public boolean encerrada() {
-		if (quantidadeTareafasRealizadas() == tarefas.size()) {
-			this.concluida = true;
-			this.reaberta = false;
+	public void encerrar() {
+		if (!this.ativa) {
+			throw new IllegalStateException("A atividade já está encerrada");
 		}
+		if (quantidadeTareafasRealizadas() == this.quantidadeTarefas) {
+			this.ativa = false;
+			this.encerrada = true;
+			this.desativada = false;
+		}
+	}
+
+	public boolean getStatusDesativada() {
+		return this.desativada;
+	}
+	public boolean getStatusEncerrada() {
+		return this.encerrada;
 	}
 	
 	public void reabrir() {
-		if () {
-
+		if (this.ativa) {
+			throw new IllegalStateException("A atividade está ativa!");
 		}
-		this.ativa= true;
-		this.concluida = false;
-		this.desativado = false;
+		this.desativada= false;
+		this.encerrada = false;
+		this.ativa = true;
 	}
 	public int quantidadeTarefas() {
 		return this.tarefas.size();

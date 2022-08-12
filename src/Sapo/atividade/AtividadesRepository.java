@@ -17,8 +17,8 @@ public class AtividadesRepository {
 		this.pr = pr;
 	}
 	public void salvaTarefas(Tarefa tarefa, String atividadeId) {
-		if (!(atividade.get(atividadeId).desativada()) || !(atividade.get(atividadeId).encerrada())) {	
-			atividade.get(atividadeId).salvaTarefas(tarefa);
+		if (!(atividade.get(atividadeId).getStatusDesativada()) || !(atividade.get(atividadeId).getStatusEncerrada())) {
+			atividade.get(atividadeId).adicionaTarefa(tarefa);
 		}
 	}
 	
@@ -30,16 +30,16 @@ public class AtividadesRepository {
 	}
 	
 	public void desativaAtividade(String atividadeId) {
-			atividade.get(atividadeId).desativada();
+			atividade.get(atividadeId).desativar();
 	}
 	public void encerraAtividade(String atividadeId) {
-			atividade.get(atividadeId).encerrada();
+			atividade.get(atividadeId).encerrar();
 		
 	}
 	
 	public void reabreAtividade(String atividadeId) {
 		Atividades atv = this.atividade.get(atividadeId);
-		if (atv.desativada()) {
+		if (atv.getStatusDesativada()) {
 			atv.reabrir();
 		}
 	}
@@ -55,7 +55,9 @@ public class AtividadesRepository {
 		}	
 		 saida += "===\n" + atv.getDescricao() + "\n===\n" + "Tarefas: " + atv.quantidadeTareafasRealizadas() + "/" +
 				atv.quantidadeTarefas() + "\n" + atv.tarefasPendentes();
+		return saida;
 	}
+
 	public void alteraDescricao(String atividadeId, String descricao) {
 		Atividades atv = this.atividade.get(atividadeId);
 		atv.setDescricao(descricao);
