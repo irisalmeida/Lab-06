@@ -1,4 +1,4 @@
-package sapo;
+package Sapo.pessoa;
 
 import java.util.ArrayList;
 import java.util.Arrays;

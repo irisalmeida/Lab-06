@@ -1,4 +1,4 @@
-package sapo;
+package Sapo.pessoa;
 //import sapo.pessoa.Pessoa;
 
 import java.util.HashMap;

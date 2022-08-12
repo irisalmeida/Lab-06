@@ -1,5 +1,5 @@
 
-package sapo;
+package Sapo.pessoa;
 
 public class PessoaController {
 
