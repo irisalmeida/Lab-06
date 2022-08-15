@@ -1,15 +1,14 @@
 package Sapo.tarefa;
 
-import Sapo.pessoa.Pessoa;
 
 import java.util.*;
 
 public class TarefaRepository {
 
     private Map<String, Tarefa> tarefas;
-    private Map<String, String> responsavelTarefa;
 
-    private Map<Tarefa, List<Pessoa>> pessoasTarefa; //seria isso mesmo?
+
+
 
     public TarefaRepository() {
         this.tarefas = new HashMap<>();
@@ -20,7 +19,9 @@ public class TarefaRepository {
         return tarefaId;
     }
 
-    public void renomeiaTarefa(String tarefaId, String novoNome) {
+
+
+    public void renomearTarefa(String tarefaId, String novoNome) {
         this.tarefas.get(tarefaId).renomeiaTarefa(novoNome);
     }
 
@@ -37,19 +38,19 @@ public class TarefaRepository {
     }
 
     public void concluirTarefa(String tarefaId) {
-        this.tarefas.get(tarefaId).concliuTarefa();
+        this.tarefas.get(tarefaId).concluirTarefa();
     }
 
     public void removeTarefa(String tarefaId) {
         this.tarefas.remove(tarefaId);
     }
 
-    public void associarPessoaResponsavelTarefa(String cpf, String idTarefa) {
-        responsavelTarefa.put(cpf, idTarefa);
+    public void associarPessoaTarefa(String cpf, String tarefaId) {
+        this.tarefas.get(tarefaId).adicionaPessoaResponsavel(cpf);
     }
 
-    public void removerPessoaResponsavelTarefa(String cpf) {
-        responsavelTarefa.remove(cpf);
+    public void removerPessoaTarefa(String cpf) {
+        this.tarefas.get(cpf).removePessoaResponsavel(cpf);
     }
 
     public String retornaAtividade(String idTarefa) {
@@ -57,15 +58,12 @@ public class TarefaRepository {
     }
 
 
-    /* big mistake down below
-    //public void associarPessoaTarefa(String cpf, String tarefaId) {
-        this.pessoasTarefa.put();
-    //}
-    //public void removePessoaTarefa(String cpf) {
-        this.pessoasTarefa.remove(cpf);
+    public String retornaCodigoAtividadeAssociada(String tarefaId) {
+        return this.tarefas.get(tarefaId).getAtividadeId();
     }
-    */
 
-
+    public String representacaoTarefa(String idTarefa) {
+        return this.tarefas.get(idTarefa).getNomeTarefa() + " - " + this.tarefas.get(idTarefa).getId();
+    }
 }
 

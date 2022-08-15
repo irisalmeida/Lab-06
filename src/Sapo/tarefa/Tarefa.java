@@ -1,6 +1,9 @@
 package Sapo.tarefa;
 
 
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Tarefa {
@@ -13,27 +16,36 @@ public class Tarefa {
 
     private String id;
 
+    private List<String> responsaveis;
+
     private static int ordem = 0;
 
-    public Tarefa(String nome, String[] habilidadesNecessarias, String atividadeId) {
+    public Tarefa( String atividadeId, String nome, String[] habilidadesNecessarias) {
         this.nome = nome;
         this.horasTotais = 0;
         this.atividadeId = atividadeId;
         this.habilidadesNecessarias = habilidadesNecessarias;
         this.tarefaConcluida = false;
-        this.id = "STD-0-" + this.ordem;
+        this.id = atividadeId + "-" + ordem;
+        ArrayList responsaveis = new ArrayList();
         ordem ++;
     }
 
     public void acrescentaHoras(int Horas) {
+        if (this.tarefaConcluida) {
+            throw new IllegalStateException("Não é possível alterar a contagem de horas de tarefas concluídas");
+        }
         this.horasTotais += Horas;
     }
 
     public void removeHoras(int Horas) {
+        if (this.tarefaConcluida) {
+            throw new IllegalStateException("Não é possível alterar a contagem de horas de tarefas concluídas");
+        }
         this.horasTotais -= Horas;
     }
 
-    public void concliuTarefa() {
+    public void concluirTarefa() {
         this.tarefaConcluida = true;
     }
 
@@ -59,6 +71,16 @@ public class Tarefa {
     public String getAtividadeId() {
         return this.atividadeId;
     }
+
+    public void adicionaPessoaResponsavel(String cpf) {
+        this.responsaveis.add(cpf);
+    }
+
+    public void removePessoaResponsavel (String cpf) {
+        this.responsaveis.removeIf( name -> name.equals(cpf));
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

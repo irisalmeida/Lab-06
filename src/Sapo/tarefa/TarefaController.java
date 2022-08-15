@@ -5,16 +5,18 @@ public class TarefaController {
 
     private TarefaRepository tr;
 
-    public TarefaController() {
-         this.tr = new TarefaRepository();
+
+    public TarefaController(TarefaRepository tr) {
+        this.tr = tr;
     }
 
-    public String cadastrarTarefa(String nome, String[] habilidades, String atividadeId) {
-        return this.tr.adicionar(new Tarefa(nome, habilidades, atividadeId));
+
+    public String cadastrarTarefa(String atividadeId, String nome, String[] habilidades) {
+        return this.tr.adicionar(new Tarefa(atividadeId, nome, habilidades));
     }
 
     public void alteraNomeTarefa(String tarefaId, String novoNome) {
-        this.tr.renomeiaTarefa(tarefaId, novoNome);
+        this.tr.renomearTarefa(tarefaId, novoNome);
     }
 
     public void alterarHabilidades(String tarefaId, String[] novasHabilidades) {
@@ -29,7 +31,7 @@ public class TarefaController {
         this.tr.removeHoras(idTarefa, horas);
     }
 
-    public String retornaAtividade(String idTarefa){
+    public String retornaAtividadeAssociada(String idTarefa) {
         return this.tr.retornaAtividade(idTarefa);
     }
 
@@ -41,19 +43,22 @@ public class TarefaController {
         this.tr.removeTarefa(idTarefa);
     }
 
-    public void associarPessoaTarefa(String cpf, String tarefaId ) {
+    public void associarPessoaTarefa(String cpf, String tarefaId) {
         this.tr.associarPessoaTarefa(cpf, tarefaId);
     }
 
-    public void removePessoaTarefa(String cpf ) {
-        this.tr.removePessoaTarefa(cpf);
+    public void removePessoaTarefa(String cpf) {
+        this.tr.removerPessoaTarefa(cpf);
     }
 
-    public void associarPessoaresponsavelTarefa(String cpf, String idTarefa) {
-        this.tr.associarPessoaResponsavelTarefa(cpf, idTarefa);
+    public String retornaCodigoAtividadeAssociada(String tarefaId) {
+        return tr.retornaCodigoAtividadeAssociada(tarefaId);
     }
 
-    public void removerPessoaResponsavelTarefa(String cpf) {
-        this.tr.removerPessoaResponsavelTarefa(cpf);
+    public String representacaoTarefa(String idTarefa) {
+        return tr.representacaoTarefa(idTarefa);
+
     }
+
+
 }
