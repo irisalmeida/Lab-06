@@ -11,10 +11,9 @@ public class AtividadesRepository {
 	private Map<String, Atividades> atividade;
 	private PessoaRepository pr;
 	
-	public AtividadesRepository(PessoaRepository pr) {
+	public AtividadesRepository() {
 		this.atividade = new HashMap<>();
 		this.tarefas = new ArrayList<>();
-		this.pr = pr;
 	}
 	public void salvaTarefas(Tarefa tarefa, String atividadeId) {
 		if (!(atividade.get(atividadeId).getStatusDesativada()) || !(atividade.get(atividadeId).getStatusEncerrada())) {
