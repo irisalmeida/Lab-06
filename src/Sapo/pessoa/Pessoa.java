@@ -11,6 +11,7 @@ public class Pessoa {
 	private String nome;
 	private String[] habilidades;
 	private ArrayList<Comentario> comentarios;
+	private Funcao funcao;
 
 	// O nome e o CPF não podem ser strings vazias durante o cadastro
 
@@ -100,7 +101,10 @@ public class Pessoa {
 	// ToString
 	@Override
 	public String toString() {
-		return getNome() + getCpf() + getHabilidadesOrdenado();
+		if (funcao != null) {
+			return getNome() + " - " + getCpf() + "\n" + funcao.toString();
+		}
+		return getNome() + " - " + getCpf();
 	}
 
 	/**
@@ -110,4 +114,22 @@ public class Pessoa {
 	public void adicionarComentario(String comentario, String autorCpf) {
 		comentarios.add(new Comentario(comentario, autorCpf));
 	}
+	
+	/**
+	 * Adiciona uma funcao
+	 * 
+	 * @param funcao
+	 */
+	public void addFuncao(Funcao funcao) {
+		this.funcao = funcao;
+	}
+	
+	/**
+	 * Remove uma funcao
+	 */
+	public void removerFuncao() {
+	 if (funcao != null) {
+		 this.funcao = null;
+	  }
+	 }
 }
