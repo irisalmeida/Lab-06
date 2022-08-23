@@ -65,5 +65,17 @@ public class TarefaRepository {
     public String representacaoTarefa(String idTarefa) {
         return this.tarefas.get(idTarefa).getNomeTarefa() + " - " + this.tarefas.get(idTarefa).getId();
     }
+   
+     //Tarefa Gerencial:
+
+    public Tarefa retornaTarefa(String idtarefa) {
+        return this.tarefas.get(idtarefa);
+    }
+
+    public String adicionarTarefaGerencial(Tarefa tarefa) {
+        String tarefaId = tarefa.getId();
+        tarefas.put(tarefaId, tarefa);
+        return tarefaId;
+    }
 }
 
