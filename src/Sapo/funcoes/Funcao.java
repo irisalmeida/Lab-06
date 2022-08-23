@@ -11,5 +11,5 @@ import Sapo.tarefa.Tarefa;
 public interface Funcao {
 	
 	public String toString();
-	public void calculaNivel();
+	//public void calculaNivel();
 }
