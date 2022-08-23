@@ -60,8 +60,8 @@ public class Aluno implements Funcao {
 	public String toString() {
 		return "Aluno " + "- " + getMatriculaAluno() + " - " + getPeriodoAluno();
 	}
-	public void calculaNivel() {
+	/*public void calculaNivel() {
 		
-	}
+	}*/
 
 }
