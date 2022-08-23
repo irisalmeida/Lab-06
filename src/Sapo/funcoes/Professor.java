@@ -74,7 +74,7 @@ public class Professor implements Funcao {
 		}return saida;
 	
 	}
-	public void calculaNivel() {
+	/*public void calculaNivel() {
 		
-	}
+	}*/
 }
