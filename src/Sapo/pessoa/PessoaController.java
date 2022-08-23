@@ -60,5 +60,9 @@ public class PessoaController {
 		return this.pr.retornaPessoa(cpf).toString();
 
 	}
+	
+	public Pessoa retornarPessoa(String cpf) {
+		 return this.pr.retornaPessoa(cpf);
+	 }
 
 }
