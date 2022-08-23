@@ -1,5 +1,6 @@
 package Sapo.tarefa;
 
+import java.util.List;
 
 public class TarefaController {
 
@@ -59,6 +60,67 @@ public class TarefaController {
         return tr.representacaoTarefa(idTarefa);
 
     }
+    
+        //Inicio de Tarefa Gerencial
 
+    //chamar a atividade que tem o id e adicionar tarefa lá dentro
+    //atividade id será o id da atividade que vai conter a tarefa gerencial
 
+    public String cadastrarTarefaGerencial(String atividadeId, String nome, String []habilidades, String []idTarefas) {
+        return this.tr.adicionar(new TarefaGerencial(atividadeId, nome, habilidades, idTarefas));
+    }
+
+    public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa){
+        // adicionar checagem para:
+        // - permitir apenas adição de tarefas em andamento;  X
+        // - não permitir adição de tarefas gerenciais que gerem um ciclo.
+        TarefaGerencial tarefaGerencial = (TarefaGerencial) this.tr.retornaTarefa(idTarefaGerencial);
+        Tarefa tarefa = tr.retornaTarefa(idTarefa);
+
+        if (!tarefa.isConcluida()) {
+            throw new IllegalStateException("Não é possível adicionar tarefas concluídas a uma tarefa gerencial");
+        }
+        if (contemCiclo(tarefaGerencial, tarefa)) {
+            throw new IllegalStateException("A adição dessa tarefa na tarefa gerencial acarretaria em um ciclo");
+        }
+
+        tarefaGerencial.adicionaTarefa(idTarefa);// Lembrar de terminar o método de adicionatarefa e fazer a relação
+    }
+
+    private boolean contemCiclo(TarefaGerencial tarefaGerencial, Tarefa tarefa) {
+        if (!(tarefa instanceof TarefaGerencial)) { return false; }
+
+        List<String> tarefasDaTarefa = ((TarefaGerencial) tarefa).getTarefas();
+        if (tarefasDaTarefa.contains(tarefaGerencial.getId())) { return true; }
+
+        for (String idSubTarefa : tarefasDaTarefa) {
+            Tarefa subtarefa = tr.retornaTarefa(idSubTarefa);
+            if (subtarefa instanceof TarefaGerencial) {
+                return contemCiclo(tarefaGerencial, subtarefa);
+            }
+        }
+
+        return false;
+    }
+
+    public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
+        TarefaGerencial tarefaGerencial = (TarefaGerencial) this.tr.retornaTarefa(idTarefaGerencial);
+        tarefaGerencial.removeTarefa(idTarefa); // Lembrar de terminar o método de removetarefa e fazer a relação
+    }
+
+    public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {
+        TarefaGerencial tarefaGerencial = (TarefaGerencial) this.tr.retornaTarefa(idTarefaGerencial);
+        List<String> todasAsTarefas = tarefaGerencial.getTarefas();
+        int contadorTarefas = 0;
+
+        for (String idTarefa: todasAsTarefas) {
+            Tarefa tarefa = tr.retornaTarefa(idTarefa);
+            if (tarefa instanceof TarefaGerencial) {
+                contadorTarefas += this.contarTodasTarefasNaTarefaGerencial(idTarefa);
+            } else {
+                contadorTarefas++;
+            }
+        }
+        return contadorTarefas;
+    }
 }
