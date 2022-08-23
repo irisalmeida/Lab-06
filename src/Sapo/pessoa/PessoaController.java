@@ -57,7 +57,8 @@ public class PessoaController {
 	 * seu CPF
 	 */
 	public String exibirPessoa(String cpf) {
-		return this.pr.retornaPessoa(cpf).toString();
+		Pessoa pessoa = this.pr.retornaPessoa(cpf);
+		return pessoa.toString() + "\n" + pessoa.getHabilidadesOrdenado();
 
 	}
 	
