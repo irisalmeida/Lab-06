@@ -5,15 +5,14 @@
 
 Íris Almeida Oliveira de Farias
 
-Matrícula: 120210791
+
 
 Emanuel Vinicius Sá de Lima e Lima
 
-Matrícula: 120210785
+
 
 Wanderson Lopes de Souto
 
-Matrícula: 120211139
 
 
 
@@ -21,21 +20,4 @@ Matrícula: 120211139
 ## Responsabilidades
 
 
-### Desenvolvimento
 
-
-Íris Almeida Oliveira de Farias- 1, 6
-
-Emanuel Vinicius Sá de Lima e Lima - 2, 5
-
-Wanderson Lopes de Souto - 3, 4
-
-
-### Testes
-
-
-Íris Almeida Oliveira de Farias - 3, 5
-
-Emanuel Vinicius Sá de Lima e Lima - 1, 4
-
-Wanderson Lopes de Souto - 2, 6
