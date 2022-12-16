@@ -17,7 +17,4 @@ Wanderson Lopes de Souto
 
 
 
-## Responsabilidades
-
-
 
